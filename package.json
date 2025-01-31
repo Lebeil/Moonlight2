@@ -1,0 +1,19 @@
+{
+  "name": "moonlight",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "bunx turbo run dev",
+    "build": "turbo run build",
+    "clean": "turbo run clean"
+  },
+  "devDependencies": {
+    "@turbo/workspaces": "^2.4.0",
+    "@types/node": "^20.0.0",
+    "turbo": "^2.4.0",
+    "typescript": "^5.0.0"
+  }
+}
