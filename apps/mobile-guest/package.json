@@ -1,8 +1,0 @@
-{
-  "name": "@moonlight/mobile-guest",
-  "scripts": {
-    "dev": "expo start",
-    "build": "expo export",
-    "clean": "rm -rf dist .expo"
-  }
-} 
