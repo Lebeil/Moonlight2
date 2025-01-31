@@ -1,6 +1,7 @@
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
+import { EventController } from './controllers/event.controller'
 import PocketBase from 'pocketbase'
 
 const app = new Hono()
@@ -10,26 +11,8 @@ app.use('*', logger())
 app.use('*', cors())
 
 // Routes pour les événements
-app.get('/events', async (c) => {
-    try {
-        const events = await pb.collection('events').getList(1, 50)
-        return c.json(events)
-    } catch (error) {
-        const errorMessage = error instanceof Error ? error.message : 'Une erreur est survenue'
-        return c.json({ error: errorMessage }, 500)
-    }
-})
-
-app.post('/events', async (c) => {
-    try {
-        const body = await c.req.json()
-        const record = await pb.collection('events').create(body)
-        return c.json(record)
-    } catch (error) {
-        const errorMessage = error instanceof Error ? error.message : 'Une erreur est survenue'
-        return c.json({ error: errorMessage }, 500)
-    }
-})
+app.post('/events', EventController.create)
+app.get('/events', EventController.list)
 
 // Routes pour les invitations
 app.post('/invitations', async (c) => {
