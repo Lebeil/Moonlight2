@@ -17,8 +17,6 @@
   },
   "scripts": {
     "dev": "bun run --watch src/index.ts",
-    "build": "bun build src/index.ts --outdir dist",
-    "db:generate": "prisma generate",
-    "db:push": "prisma db push"
+    "build": "bun build src/index.ts --outdir dist"
   }
 }
